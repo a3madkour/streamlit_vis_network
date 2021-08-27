@@ -7,7 +7,7 @@ import streamlit.components.v1 as components
 import streamlit as st
 
 
-_RELEASE = True
+_RELEASE = False
 
 if not _RELEASE:
     _vis_network = components.declare_component(
@@ -60,7 +60,7 @@ class Node:
         shape="circularImage",
         symbolType="circle",
         strokeColor="",  # F7A7A6
-        title="",  # F7A7A6
+        # title="",  # F7A7A6
         widthConstraint=False,
         x=None,
         y=None,
@@ -79,7 +79,7 @@ class Node:
         self.shape = shape
         self.symbolType = symbolType
         self.strokeColor = strokeColor
-        self.title = title
+        # self.title = label
         self.widthConstraint = widthConstraint
         self.x = x
         self.y = y
