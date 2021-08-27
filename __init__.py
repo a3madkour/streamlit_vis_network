@@ -160,13 +160,7 @@ if not _RELEASE:
         )
     )
     edges.append(Edge(source="Captain_Marvel", target="Spiderman", type="CURVE_SMOOTH"))
-    nodes.append(
-        Node(
-            id="Chris_Klose",
-            size=30,
-            abbrev="CK",
-        )
-    )  #
+    nodes.append(Node(id="Chris_Klose", size=30, abbrev="CK", color="#00000"))  #
     edges.append(
         Edge(source="Chris_Klose", target="Spiderman", type="CURVE_SMOOTH", id="omak")
     )
@@ -177,7 +171,7 @@ if not _RELEASE:
 
     # myConfig = { "nodeHighlightBehavior": "true", "node": { "color": "lightgreen", "size": 120, "highlightStrokeColor": "blue",}, "link": { "highlightColor": "lightblue",}, }
 
-    config = Config(width=1500, height=1500, directed=True)
+    config = Config(width=1500, height=500, directed=True)
     return_value = vis_network(nodes=nodes, edges=edges, config=config)
 
     # st.write(return_value)

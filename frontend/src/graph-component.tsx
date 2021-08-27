@@ -1,5 +1,5 @@
 
-import React, { ReactNode, createRef, useEffect, useContext } from 'react';
+import React, { ReactNode, createRef } from 'react';
 import { Network } from "vis-network/standalone/esm/vis-network"
 /* import { IGraph } from './util/graph'; */
 import {
@@ -9,21 +9,13 @@ import {
 } from "streamlit-component-lib";
 
 interface State {
-  network: any
-}
-interface Props {
-  /* graph: IGraph, */
-  args: any
-  /* width?: number,
-   * height?: number,
-   * updateParent?: () => void,
-   * manipulate: boolean
-   * letter: Letter */
+  height: number,
+   myRef:  any
 }
 
 class GraphComponent extends StreamlitComponentBase<State> {
 
-  public state = { network: {}, myRef: createRef<HTMLDivElement>() }
+  public state = { height: 100, myRef: createRef<HTMLDivElement>() }
 
 
   public componentDidMount() {
@@ -57,10 +49,9 @@ class GraphComponent extends StreamlitComponentBase<State> {
 
     const python_data = JSON.parse(this.props.args["data"])
     const python_config = JSON.parse(this.props.args["config"])
+    this.setState({height: python_config.height, myRef:this.state.myRef})
     const options = {
       interaction: { hover: true },
-      /* width: python_config.width,
-* height: python_config.height, */
       edges: {
         arrows: { to: true }
       },
@@ -81,7 +72,7 @@ class GraphComponent extends StreamlitComponentBase<State> {
   public render = (): ReactNode => {
 
     return (
-      <div className="graph-container" ref={this.state.myRef} >
+        <div style={{width: "100vw", height: this.state.height+"px"}} className="graph-container" ref={this.state.myRef} >
       </div>
     )
 
