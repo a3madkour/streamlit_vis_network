@@ -1,0 +1,7 @@
+.graph-container {
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    width:100vw;
+    height:850px;
+}
