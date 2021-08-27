@@ -1,7 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import GraphComponent from "./graph-component"
-import AgraphComponent from "./AgraphComponent"
 import './App.css';
 
 ReactDOM.render(

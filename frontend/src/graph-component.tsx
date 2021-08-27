@@ -26,21 +26,6 @@ class GraphComponent extends StreamlitComponentBase<State> {
   public state = { network: {}, myRef: createRef<HTMLDivElement>() }
 
 
-  // create an array with edges
-
-  /* var data = {
-   *     nodes: props.graph.nodes,
-   *     edges: props.graph.edges,
-   * }; */
-
-
-  /* const graphs = ["first", "second", "third"] */
-
-  /* const handleChange = (e:any) =>{
-   *     return
-   * } */
-
-
   public componentDidMount() {
     const processGraph = (graph: any) => {
 
@@ -50,17 +35,18 @@ class GraphComponent extends StreamlitComponentBase<State> {
 
       for (var i = 0; i < graph.nodes.length; i++) {
         var node: any = Object.assign({}, graph.nodes[i]);
-        var svg =
-          '<svg xmlns="http://www.w3.org/2000/svg" width="75" height="75">' +
-          '<circle cx="37.5" cy="37.5" r="35" fill="#aeaeae" />' +
-          '<text x="50%" y="50%" text-anchor="middle" fill="white" font-size="x-large" font-family="Arial" dy=".3em">' + graph.nodes[i].abbrev + '</text>' +
-          'Sorry, your browser does not support inline SVG.' +
-          "</svg>";
+        if (node.image === ""){
+          var svg =
+            '<svg xmlns="http://www.w3.org/2000/svg" width="75" height="75">' +
+            '<circle cx="37.5" cy="37.5" r="35" fill="' + node.svgcolor + '" />' +
+            '<text x="50%" y="50%" text-anchor="middle" fill="white" font-size="x-large" font-family="Arial" dy=".3em">' + graph.nodes[i].abbrev + '</text>' +
+            'Sorry, your browser does not support inline SVG.' +
+            "</svg>";
 
-        var url = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
-
-        node.shape = "circularImage";
-        node.image = url;
+          var url = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+          node.image = url;
+        }
+        
         data.nodes.push(node)
       }
       data.edges = graph.edges
